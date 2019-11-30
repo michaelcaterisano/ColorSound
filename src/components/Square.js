@@ -1,4 +1,5 @@
 import React from "react";
+import { relative } from "path";
 
 class Square extends React.Component {
   constructor(props) {
@@ -14,22 +15,25 @@ class Square extends React.Component {
       <div
         style={{
           display: "flex",
-          justifyContent: "center",
+          justifyContent: "flex-start",
           alignItems: "flex-start",
-          width: "100%",
           height: "100%",
+          width: "100%",
           color: "white",
           backgroundColor: `hsl(${shiftedHue}, 100%, 50%)`
         }}
       >
         <div
           style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-around",
+            alignItems: "center",
             zIndex: "1",
-            textAlign: "center",
             fontSize: "30px",
-            marginTop: "20%",
             border: "5px solid red",
-            width: "300px",
+            width: "100%",
+            height: "20%",
             padding: "30px"
           }}
         >

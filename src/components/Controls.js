@@ -83,17 +83,19 @@ class Controls extends React.Component {
       <div
         style={{
           position: "relative",
-          height: "100vh",
-          width: "100vw"
+          height: "100%",
+          width: "100%"
         }}
       >
         {/* Square */}
-        <Square
-          hue={this.state.hue}
-          shiftedHue={this.state.shiftedHue}
-          lightness={this.state.lightness}
-          frequency={this.state.frequency}
-        />
+        <div style={{ height: "100vh" }}>
+          <Square
+            hue={this.state.hue}
+            shiftedHue={this.state.shiftedHue}
+            lightness={this.state.lightness}
+            frequency={this.state.frequency}
+          />
+        </div>
 
         {/* Blue */}
         <div className="wrapper">
@@ -101,35 +103,22 @@ class Controls extends React.Component {
         </div>
 
         {/* Controls */}
-        <div
-          style={{
-            zIndex: "2",
-            width: "80vw",
-            position: "absolute",
-            margin: "auto",
-            top: "45%",
-            left: "0",
-            bottom: "0",
-            right: "0"
-          }}
-        >
+
+        <div className="slider">
+          <div style={{ marginBottom: "30px" }}>
+            <button onClick={() => fm.start()}>start</button>
+            <button onClick={() => fm.stop()}>stop</button>
+          </div>
           <div>
-            <div style={{ marginBottom: "40px" }}>
-              <button onClick={() => fm.start()}>start</button>
-              <button onClick={() => fm.stop()}>stop</button>
-            </div>
-            <div>
-              <input
-                style={{ width: "100%" }}
-                type="range"
-                min="0"
-                max="360"
-                step=".01"
-                orient="vertical"
-                value={this.state.hue}
-                onChange={this.onHueChange}
-              />
-            </div>
+            <input
+              style={{ width: "100%" }}
+              type="range"
+              min="0"
+              max="360"
+              step=".01"
+              value={this.state.hue}
+              onChange={this.onHueChange}
+            />
           </div>
         </div>
       </div>
