@@ -84,8 +84,7 @@ class Controls extends React.Component {
         style={{
           position: "relative",
           height: "100vh",
-          width: "100vw",
-          border: "10px solid green"
+          width: "100vw"
         }}
       >
         {/* Square */}
