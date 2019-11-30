@@ -16,18 +16,20 @@ class Square extends React.Component {
           display: "flex",
           justifyContent: "center",
           alignItems: "flex-start",
-          width: "100vw",
-          height: "100vh",
+          width: "100%",
+          height: "100%",
           color: "white",
           backgroundColor: `hsl(${shiftedHue}, 100%, 50%)`
         }}
       >
         <div
           style={{
+            zIndex: "1",
             textAlign: "center",
             fontSize: "30px",
             marginTop: "20%",
             border: "5px solid red",
+            width: "300px",
             padding: "30px"
           }}
         >

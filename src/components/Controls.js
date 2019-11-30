@@ -2,6 +2,12 @@ import React from "react";
 import Square from "./Square";
 import Tone from "tone";
 import convert from "color-convert";
+import blue from "../assets/blue.png";
+import green from "../assets/green.png";
+import yellow from "../assets/yellow.png";
+import red from "../assets/red.png";
+
+import "./controls.css";
 
 const INIT_FREQ = 128;
 /*** CREATE SYNTH ***/
@@ -74,15 +80,31 @@ class Controls extends React.Component {
 
   render() {
     return (
-      <div>
+      <div
+        style={{
+          position: "relative",
+          height: "100vh",
+          width: "100vw",
+          border: "10px solid green"
+        }}
+      >
+        {/* Square */}
         <Square
           hue={this.state.hue}
           shiftedHue={this.state.shiftedHue}
           lightness={this.state.lightness}
           frequency={this.state.frequency}
         />
+
+        {/* Blue */}
+        <div className="wrapper">
+          <img src={blue} alt=""></img>
+        </div>
+
+        {/* Controls */}
         <div
           style={{
+            zIndex: "2",
             width: "80vw",
             position: "absolute",
             margin: "auto",
