@@ -23,10 +23,20 @@ class Square extends React.Component {
         }}
       >
         <div
-          style={{ textAlign: "center", fontSize: "100px", marginTop: "20%" }}
+          style={{
+            textAlign: "center",
+            fontSize: "30px",
+            marginTop: "20%",
+            border: "5px solid red",
+            padding: "30px"
+          }}
         >
-          <div>{lightness}</div>
-          {/* <div>frequency {frequency}</div> */}
+          <div>
+            Brightness: <span>{lightness}</span>
+          </div>
+          <div>
+            Frequency: <span>{frequency}</span>
+          </div>
         </div>
       </div>
     );

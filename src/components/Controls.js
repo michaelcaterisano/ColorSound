@@ -97,16 +97,18 @@ class Controls extends React.Component {
               <button onClick={() => fm.start()}>start</button>
               <button onClick={() => fm.stop()}>stop</button>
             </div>
-
-            <input
-              style={{ width: "100%" }}
-              type="range"
-              min="0"
-              max="360"
-              step=".01"
-              value={this.state.hue}
-              onChange={this.onHueChange}
-            />
+            <div>
+              <input
+                style={{ width: "100%" }}
+                type="range"
+                min="0"
+                max="360"
+                step=".01"
+                orient="vertical"
+                value={this.state.hue}
+                onChange={this.onHueChange}
+              />
+            </div>
           </div>
         </div>
       </div>
