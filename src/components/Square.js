@@ -31,7 +31,6 @@ class Square extends React.Component {
             alignItems: "center",
             zIndex: "1",
             fontSize: "30px",
-            border: "5px solid red",
             width: "100%",
             height: "20%",
             padding: "30px"
