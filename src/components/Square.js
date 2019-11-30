@@ -15,14 +15,16 @@ class Square extends React.Component {
         style={{
           display: "flex",
           justifyContent: "center",
-          alignItems: "center",
+          alignItems: "flex-start",
           width: "100vw",
           height: "100vh",
           color: "white",
           backgroundColor: `hsl(${shiftedHue}, 100%, 50%)`
         }}
       >
-        <div style={{ textAlign: "center", fontSize: "100px" }}>
+        <div
+          style={{ textAlign: "center", fontSize: "100px", marginTop: "20%" }}
+        >
           <div>{lightness}</div>
           {/* <div>frequency {frequency}</div> */}
         </div>

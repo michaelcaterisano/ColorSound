@@ -86,14 +86,14 @@ class Controls extends React.Component {
             width: "80vw",
             position: "absolute",
             margin: "auto",
-            top: "20%",
+            top: "45%",
             left: "0",
             bottom: "0",
             right: "0"
           }}
         >
           <div>
-            <div style={{ marginBottom: "20px" }}>
+            <div style={{ marginBottom: "40px" }}>
               <button onClick={() => fm.start()}>start</button>
               <button onClick={() => fm.stop()}>stop</button>
             </div>
