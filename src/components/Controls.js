@@ -6,6 +6,8 @@ import blue from "../assets/blue.png";
 import green from "../assets/green.png";
 import yellow from "../assets/yellow.png";
 import red from "../assets/red.png";
+import { Slider } from "@material-ui/core";
+import { Button } from "@material-ui/core";
 
 import "./controls.css";
 
@@ -28,12 +30,12 @@ class Controls extends React.Component {
     this.expandedLightness = this.expandLightness.bind(this);
   }
 
-  onHueChange(event) {
+  onHueChange(event, value) {
     const synth = this.props.synth;
     // get slider value (0 - 360 to represent hue). RED -> GREEN -> BLUE
-    const hue = event.target.value;
+    const hue = value;
     // shift values to start at 240. BLUE -> RED -> GREEN
-    const shifted = this.shiftToBlue(event.target.value);
+    const shifted = this.shiftToBlue(value);
     // calculate LAB, get lightness value
     const lightness = this.hslToLab(shifted);
     // convert lightness value to frequency
@@ -81,21 +83,22 @@ class Controls extends React.Component {
     return (
       <div
         style={{
-          position: "relative",
-          height: "100%",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "100vh",
           width: "100%",
           backgroundColor: `hsl(${this.state.shiftedHue}, 100%, 50%)`
         }}
       >
-        {/* Text */}
-        <div style={{ height: "100vh" }}>
+        {/* <div style={{ height: "100vh" }}>
           <Text
             hue={this.state.hue}
             shiftedHue={this.state.shiftedHue}
             lightness={this.state.lightness}
             frequency={this.state.frequency}
           />
-        </div>
+        </div> */}
 
         {/* Blue */}
         <div className="wrapper">
@@ -103,20 +106,44 @@ class Controls extends React.Component {
         </div>
 
         {/* Controls */}
+        <div
+          style={{
+            width: "80vw",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center"
+          }}
+        >
+          <div id="buttons" style={{ display: "flex" }}>
+            <div style={{ margin: "10px" }}>
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={() => synth.start()}
+              >
+                start
+              </Button>
+            </div>
 
-        <div className="slider">
-          <div style={{ marginBottom: "30px" }}>
-            <button onClick={() => synth.start()}>start</button>
-            <button onClick={() => synth.stop()}>stop</button>
+            <div style={{ margin: "10px" }}>
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={() => synth.stop()}
+              >
+                stop
+              </Button>
+            </div>
           </div>
-          <div>
-            <input
-              style={{ width: "100%" }}
-              type="range"
-              min="0"
-              max="360"
-              step=".01"
-              value={this.state.hue}
+
+          <div id="slider-container" style={{ width: "80%" }}>
+            <Slider
+              min={0}
+              max={255}
+              step={0.01}
+              defaultValue={red}
+              track={false}
               onChange={this.onHueChange}
             />
           </div>
