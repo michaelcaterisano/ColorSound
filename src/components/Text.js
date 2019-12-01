@@ -17,9 +17,8 @@ class Text extends React.Component {
           display: "flex",
           justifyContent: "flex-start",
           alignItems: "flex-start",
-          height: "100%",
-          width: "100%",
-          color: "white"
+          color: "white",
+          border: "5px solid red"
         }}
       >
         <div
@@ -29,7 +28,7 @@ class Text extends React.Component {
             justifyContent: "space-around",
             alignItems: "center",
             zIndex: "1",
-            fontSize: "60px",
+            fontSize: "30px",
             width: "100%",
             height: "20%",
             padding: "30px"
