@@ -88,6 +88,7 @@ class RGB extends React.Component {
             backgroundColor: `rgb(${red}, ${green}, ${blue})`
           }}
         >
+          <Typography color="secondary">sound on please</Typography>
           <div style={classes.sliders}>
             <div style={classes.slider}>
               <Slider
