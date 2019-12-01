@@ -1,6 +1,7 @@
 import React from "react";
 import Typography from "@material-ui/core/Typography";
 import Slider from "@material-ui/core/Slider";
+import Button from "@material-ui/core/Button";
 import convert from "color-convert";
 
 const SCALE = 8;
@@ -19,6 +20,9 @@ const classes = {
   slider: {
     height: "100%",
     padding: "0 20px 0 20px"
+  },
+  button: {
+    margin: "20px"
   }
 };
 
@@ -64,7 +68,6 @@ class RGB extends React.Component {
   componentDidMount() {
     const { synth } = this.props;
     this.updateLightness();
-    synth.start();
   }
 
   render() {
@@ -129,6 +132,27 @@ class RGB extends React.Component {
               <Typography color="primary" gutterbottom>
                 blue
               </Typography>
+            </div>
+          </div>
+          <div style={{ display: "flex" }}>
+            <div style={classes.button}>
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={() => synth.start()}
+              >
+                start
+              </Button>
+            </div>
+
+            <div style={classes.button}>
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={() => synth.stop()}
+              >
+                stop
+              </Button>
             </div>
           </div>
         </div>
