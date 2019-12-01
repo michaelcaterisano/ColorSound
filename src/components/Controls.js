@@ -1,5 +1,5 @@
 import React from "react";
-import Square from "./Square";
+import Text from "./Text";
 import Tone from "tone";
 import convert from "color-convert";
 import blue from "../assets/blue.png";
@@ -10,9 +10,10 @@ import red from "../assets/red.png";
 import "./controls.css";
 
 const INIT_FREQ = 128;
+
 /*** CREATE SYNTH ***/
 // const dist = new Tone.Distortion(0.0).toMaster();
-const fm = new Tone.Oscillator(INIT_FREQ).toMaster();
+// const synth = new Tone.Oscillator(INIT_FREQ).toMaster();
 
 class Controls extends React.Component {
   constructor(props) {
@@ -32,6 +33,7 @@ class Controls extends React.Component {
   }
 
   onHueChange(event) {
+    const synth = this.props.synth;
     // get slider value (0 - 360 to represent hue). RED -> GREEN -> BLUE
     const hue = event.target.value;
     // shift values to start at 240. BLUE -> RED -> GREEN
@@ -41,7 +43,7 @@ class Controls extends React.Component {
     // convert lightness value to frequency
     const frequency = this.convertLabToFreq(lightness) * 4;
     // set synth frequency
-    fm.frequency.value = frequency;
+    synth.frequency.value = frequency;
     //
     this.setState({
       hue: hue,
@@ -79,17 +81,19 @@ class Controls extends React.Component {
   }
 
   render() {
+    const synth = this.props.synth;
     return (
       <div
         style={{
           position: "relative",
           height: "100%",
-          width: "100%"
+          width: "100%",
+          backgroundColor: `hsl(${this.state.shiftedHue}, 100%, 50%)`
         }}
       >
-        {/* Square */}
+        {/* Text */}
         <div style={{ height: "100vh" }}>
-          <Square
+          <Text
             hue={this.state.hue}
             shiftedHue={this.state.shiftedHue}
             lightness={this.state.lightness}
@@ -106,8 +110,8 @@ class Controls extends React.Component {
 
         <div className="slider">
           <div style={{ marginBottom: "30px" }}>
-            <button onClick={() => fm.start()}>start</button>
-            <button onClick={() => fm.stop()}>stop</button>
+            <button onClick={() => synth.start()}>start</button>
+            <button onClick={() => synth.stop()}>stop</button>
           </div>
           <div>
             <input

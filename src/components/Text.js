@@ -1,7 +1,7 @@
 import React from "react";
 import { relative } from "path";
 
-class Square extends React.Component {
+class Text extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -19,8 +19,7 @@ class Square extends React.Component {
           alignItems: "flex-start",
           height: "100%",
           width: "100%",
-          color: "white",
-          backgroundColor: `hsl(${shiftedHue}, 100%, 50%)`
+          color: "white"
         }}
       >
         <div
@@ -30,22 +29,22 @@ class Square extends React.Component {
             justifyContent: "space-around",
             alignItems: "center",
             zIndex: "1",
-            fontSize: "30px",
+            fontSize: "60px",
             width: "100%",
             height: "20%",
             padding: "30px"
           }}
         >
           <div>
-            Brightness: <span>{lightness}</span>
+            <span>{lightness}</span>
           </div>
-          <div>
-            Frequency: <span>{frequency}</span>
-          </div>
+          {/* <div>
+            <span>{frequency}</span>
+          </div> */}
         </div>
       </div>
     );
   }
 }
 
-export default Square;
+export default Text;
