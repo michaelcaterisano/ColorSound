@@ -6,6 +6,7 @@ import blue from "../assets/blue.png";
 import green from "../assets/green.png";
 import yellow from "../assets/yellow.png";
 import red from "../assets/red.png";
+import { withStyles, makeStyles } from "@material-ui/core/styles";
 import { Slider } from "@material-ui/core";
 import { Button } from "@material-ui/core";
 import { Typography } from "@material-ui/core";
@@ -14,6 +15,41 @@ import { isMobile } from "react-device-detect";
 import "./controls.css";
 
 const INIT_FREQ = 128;
+
+const iOSBoxShadow =
+  "0 3px 1px rgba(0,0,0,0.1),0 4px 8px rgba(0,0,0,0.13),0 0 0 1px rgba(0,0,0,0.02)";
+
+const MySlider = withStyles({
+  root: {
+    color: "red",
+    height: 2,
+    padding: "15px 0"
+  },
+  thumb: {
+    height: 28,
+    width: 28,
+    backgroundColor: "#fff",
+    boxShadow: iOSBoxShadow,
+    marginTop: -14,
+    marginLeft: -14,
+    "&:focus,&:hover,&$active": {
+      boxShadow:
+        "0 3px 1px rgba(0,0,0,0.1),0 4px 8px rgba(0,0,0,0.3),0 0 0 1px rgba(0,0,0,0.02)",
+      // Reset on touch devices, it doesn't add specificity
+      "@media (hover: none)": {
+        boxShadow: iOSBoxShadow
+      }
+    }
+  },
+  track: {
+    height: 8,
+    borderRadius: 4
+  },
+  rail: {
+    height: 8,
+    borderRadius: 4
+  }
+})(Slider);
 
 class Controls extends React.Component {
   constructor(props) {
@@ -111,7 +147,7 @@ class Controls extends React.Component {
             }}
           >
             {" "}
-            <div id="buttons" style={{ display: "flex" }}>
+            <div id="buttons" style={{ display: "flex", marginBottom: "20px" }}>
               <div style={{ margin: "10px" }}>
                 <Button
                   variant="contained"
@@ -133,7 +169,7 @@ class Controls extends React.Component {
               </div>
             </div>
             <div id="slider-container" style={{ width: "80%" }}>
-              <Slider
+              <MySlider
                 min={0}
                 max={255}
                 step={0.01}
