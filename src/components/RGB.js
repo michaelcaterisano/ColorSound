@@ -5,8 +5,8 @@ import Button from "@material-ui/core/Button";
 import convert from "color-convert";
 import { isMobile } from "react-device-detect";
 
-const SCALE = 8;
-const SHIFT = 100;
+const SCALE = 4;
+const SHIFT = 0;
 
 const classes = {
   sliders: {
