@@ -31,9 +31,9 @@ class RGB extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      red: 30,
+      red: 0,
       green: 0,
-      blue: 80,
+      blue: 255,
       lightness: 0,
       frequency: 0
     };
