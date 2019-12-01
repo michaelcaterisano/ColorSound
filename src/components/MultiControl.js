@@ -36,7 +36,7 @@ const style = {
 };
 
 const MultiControl = () => {
-  const synthOne = new Tone.Oscillator(INIT_FREQ, "triangle").toMaster();
+  const synthOne = new Tone.Oscillator(INIT_FREQ, "triangle9").toMaster();
   const synthTwo = new Tone.Oscillator(INIT_FREQ, "triangle").toMaster();
   const synthThree = new Tone.Oscillator(INIT_FREQ, "triangle").toMaster();
   const synthFour = new Tone.Oscillator(INIT_FREQ, "triangle").toMaster();
@@ -44,10 +44,10 @@ const MultiControl = () => {
   return (
     <div>
       {" "}
-      <div style={style.squareOne}>
+      <div>
         <Controls synth={synthOne} />
       </div>
-      <div style={style.squareTwo}>
+      {/* <div style={style.squareTwo}>
         {" "}
         <Controls synth={synthTwo} />
       </div>
@@ -58,7 +58,7 @@ const MultiControl = () => {
       <div style={style.squareFour}>
         {" "}
         <Controls synth={synthFour} />
-      </div>
+      </div> */}
     </div>
   );
 };

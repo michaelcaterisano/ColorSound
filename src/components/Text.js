@@ -36,11 +36,11 @@ class Text extends React.Component {
           }}
         >
           <div>
-            <span>{lightness}</span>
+            <span>Lightness: {lightness}</span>
           </div>
-          {/* <div>
-            <span>{frequency}</span>
-          </div> */}
+          <div>
+            <span>Frequency: {frequency}</span>
+          </div>
         </div>
       </div>
     );

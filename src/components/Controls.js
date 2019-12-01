@@ -11,10 +11,6 @@ import "./controls.css";
 
 const INIT_FREQ = 128;
 
-/*** CREATE SYNTH ***/
-// const dist = new Tone.Distortion(0.0).toMaster();
-// const synth = new Tone.Oscillator(INIT_FREQ).toMaster();
-
 class Controls extends React.Component {
   constructor(props) {
     super(props);
