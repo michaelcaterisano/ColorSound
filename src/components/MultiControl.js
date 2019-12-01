@@ -36,10 +36,10 @@ const style = {
 };
 
 const MultiControl = () => {
-  const synthOne = new Tone.Oscillator(INIT_FREQ).toMaster();
-  const synthTwo = new Tone.Oscillator(INIT_FREQ).toMaster();
-  const synthThree = new Tone.Oscillator(INIT_FREQ).toMaster();
-  const synthFour = new Tone.Oscillator(INIT_FREQ).toMaster();
+  const synthOne = new Tone.Oscillator(INIT_FREQ, "triangle").toMaster();
+  const synthTwo = new Tone.Oscillator(INIT_FREQ, "triangle").toMaster();
+  const synthThree = new Tone.Oscillator(INIT_FREQ, "triangle").toMaster();
+  const synthFour = new Tone.Oscillator(INIT_FREQ, "triangle").toMaster();
 
   return (
     <div>
