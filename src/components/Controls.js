@@ -9,6 +9,7 @@ import red from "../assets/red.png";
 import { Slider } from "@material-ui/core";
 import { Button } from "@material-ui/core";
 import { Typography } from "@material-ui/core";
+import { isMobile } from "react-device-detect";
 
 import "./controls.css";
 
@@ -89,7 +90,7 @@ class Controls extends React.Component {
             justifyContent: "center",
             alignItems: "center",
             flexDirection: "column",
-            height: "100vh",
+            height: isMobile ? window.innerHeight : "100vh",
             width: "100%",
             backgroundColor: `hsl(${this.state.shiftedHue}, 100%, 50%)`
           }}
