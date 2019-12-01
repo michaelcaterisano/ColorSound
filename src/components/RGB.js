@@ -3,6 +3,7 @@ import Typography from "@material-ui/core/Typography";
 import Slider from "@material-ui/core/Slider";
 import Button from "@material-ui/core/Button";
 import convert from "color-convert";
+import { isMobile } from "react-device-detect";
 
 const SCALE = 8;
 const SHIFT = 100;

@@ -3,6 +3,7 @@ import Controls from "./Controls";
 import RGB from "./RGB";
 import Tone from "tone";
 import { callbackify } from "util";
+import { isMobile } from "react-device-detect";
 
 const INIT_FREQ = 0;
 
@@ -11,7 +12,7 @@ const style = {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    height: "100vh",
+    height: isMobile ? window.innerHeight : "100vh",
     maxWidth: "100%"
   },
 
