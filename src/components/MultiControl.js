@@ -1,10 +1,20 @@
 import React from "react";
 import Controls from "./Controls";
+import RGB from "./RGB";
 import Tone from "tone";
+import { callbackify } from "util";
 
-const INIT_FREQ = 128;
+const INIT_FREQ = 0;
 
 const style = {
+  screen: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    height: "100vh",
+    maxWidth: "100%"
+  },
+
   squareOne: {
     position: "fixed",
     top: "0",
@@ -42,23 +52,9 @@ const MultiControl = () => {
   const synthFour = new Tone.Oscillator(INIT_FREQ, "triangle").toMaster();
 
   return (
-    <div>
+    <div style={style.screen}>
       {" "}
-      <div>
-        <Controls synth={synthOne} />
-      </div>
-      {/* <div style={style.squareTwo}>
-        {" "}
-        <Controls synth={synthTwo} />
-      </div>
-      <div style={style.squareThree}>
-        {" "}
-        <Controls synth={synthThree} />
-      </div>
-      <div style={style.squareFour}>
-        {" "}
-        <Controls synth={synthFour} />
-      </div> */}
+      <RGB synth={synthOne} />
     </div>
   );
 };

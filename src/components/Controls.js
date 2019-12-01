@@ -10,6 +10,7 @@ import red from "../assets/red.png";
 import "./controls.css";
 
 const INIT_FREQ = 128;
+const SCALE = 4;
 
 class Controls extends React.Component {
   constructor(props) {
@@ -25,7 +26,7 @@ class Controls extends React.Component {
     this.hslToLab = this.hslToLab.bind(this);
     this.shiftToBlue = this.shiftToBlue.bind(this);
     this.convertLabToFreq = this.convertLabToFreq.bind(this);
-    this.expandedLightness = this.expandLightness.bind(this);
+    // this.expandedLightness = this.expandLightness.bind(this);
   }
 
   onHueChange(event) {
@@ -37,7 +38,7 @@ class Controls extends React.Component {
     // calculate LAB, get lightness value
     const lightness = this.hslToLab(shifted);
     // convert lightness value to frequency
-    const frequency = this.convertLabToFreq(lightness) * 4;
+    const frequency = this.convertLabToFreq(lightness) * SCALE;
     // set synth frequency
     synth.frequency.value = frequency;
     //
@@ -72,31 +73,20 @@ class Controls extends React.Component {
     return x;
   }
 
-  expandLightness(x) {
-    return x === null ? 0 : (x - 32) * (100 / 65);
-  }
+  // expandLightness(x) {
+  //   return x === null ? 0 : (x - 32) * (100 / 65);
+  // }
 
   render() {
     const synth = this.props.synth;
     return (
       <div
         style={{
-          position: "relative",
-          height: "100%",
-          width: "100%",
+          height: "100vh",
+          width: "100vw",
           backgroundColor: `hsl(${this.state.shiftedHue}, 100%, 50%)`
         }}
       >
-        {/* Text */}
-        <div style={{ height: "100vh" }}>
-          <Text
-            hue={this.state.hue}
-            shiftedHue={this.state.shiftedHue}
-            lightness={this.state.lightness}
-            frequency={this.state.frequency}
-          />
-        </div>
-
         {/* Blue */}
         <div className="wrapper">
           <img src={blue} alt=""></img>
