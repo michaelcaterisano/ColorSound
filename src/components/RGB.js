@@ -3,6 +3,7 @@ import Typography from "@material-ui/core/Typography";
 import Slider from "@material-ui/core/Slider";
 import Button from "@material-ui/core/Button";
 import convert from "color-convert";
+import { withStyles } from "@material-ui/core/styles";
 import { isMobile } from "react-device-detect";
 
 const SCALE = 4;
@@ -31,9 +32,9 @@ class RGB extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      red: 0,
-      green: 0,
-      blue: 255,
+      red: 215,
+      green: 72,
+      blue: 148,
       lightness: 0,
       frequency: 0
     };
