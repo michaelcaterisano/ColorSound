@@ -171,7 +171,7 @@ class Controls extends React.Component {
             <div id="slider-container" style={{ width: "80%" }}>
               <MySlider
                 min={0}
-                max={255}
+                max={350}
                 step={0.01}
                 defaultValue={red}
                 track={false}
