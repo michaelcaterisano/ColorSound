@@ -145,11 +145,7 @@ class Controls extends React.Component {
             justifyContent: "center",
             alignItems: "center",
             flexDirection: "column",
-            height: isLandscape
-              ? window.innerHeight
-              : isPortrait
-              ? window.innerHeight
-              : "100vh",
+            height: isMobile ? window.innerHeight : "100vh",
             backgroundColor: playing
               ? `hsl(${this.state.shiftedHue}, 100%, 50%)`
               : "white",
