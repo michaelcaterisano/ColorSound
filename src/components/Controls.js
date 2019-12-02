@@ -150,24 +150,8 @@ class Controls extends React.Component {
             height: "100%"
           }}
         >
-          {/* Blue */}
           {this.state.playing ? (
-            <div
-              style={{
-                position: "absolute",
-                top: "0",
-                left: "0",
-                height: "100px",
-                width: "100px",
-                backgroundImage: `url(${blue})`,
-                backgroundSize: "contain",
-                backgroundRepeat: "no-repeat",
-                zIndex: "0"
-              }}
-            ></div>
-          ) : null}
-          {this.state.playing ? (
-            <div style={{ position: "absolute", top: "10%", fontSize: "30px" }}>
+            <div style={{ position: "absolute", top: "5%", fontSize: "20px" }}>
               {this.state.frequency.toFixed(1)}Hz
             </div>
           ) : null}
