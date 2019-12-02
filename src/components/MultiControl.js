@@ -3,11 +3,12 @@ import Controls from "./Controls";
 import Tone from "tone";
 import { isMobile } from "react-device-detect";
 import { withOrientationChange } from "react-device-detect";
+import innerHeight from "ios-inner-height";
 
-let height = window.innerHeight;
+let height = innerHeight();
 
 window.addEventListener("orientationchange", function(e) {
-  height = window.innerHeight;
+  height = innerHeight();
 });
 
 const INIT_FREQ = 129;

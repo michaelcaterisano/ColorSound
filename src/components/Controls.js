@@ -140,7 +140,6 @@ class Controls extends React.Component {
       <React.Fragment>
         <div
           style={{
-            position: "relative",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
