@@ -153,11 +153,11 @@ class Controls extends React.Component {
             height: "100%"
           }}
         >
-          {this.state.playing ? (
-            <div style={{ position: "absolute", top: "5%", fontSize: "20px" }}>
+          {/* {this.state.playing ? (
+            <div style={{ position: "absolute", top: "2%", fontSize: "20px" }}>
               {this.state.frequency.toFixed(1)}Hz
             </div>
-          ) : null}
+          ) : null} */}
           <div style={{ zIndex: "2", color: customRed }}>sound on please</div>
 
           {/* Controls */}

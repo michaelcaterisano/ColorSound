@@ -28,13 +28,12 @@ const classes = {
     height: "100%"
   }
 };
+const synthOne = new Tone.Oscillator(INIT_FREQ, "triangle16").toMaster();
+const synthTwo = new Tone.Oscillator(INIT_FREQ, "triangle").toMaster();
+const synthThree = new Tone.Oscillator(INIT_FREQ, "triangle16").toMaster();
+const synthFour = new Tone.Oscillator(INIT_FREQ, "triangle").toMaster();
 
 const MultiControl = () => {
-  const synthOne = new Tone.Oscillator(INIT_FREQ, "triangle16").toMaster();
-  const synthTwo = new Tone.Oscillator(INIT_FREQ, "triangle").toMaster();
-  const synthThree = new Tone.Oscillator(INIT_FREQ, "triangle16").toMaster();
-  const synthFour = new Tone.Oscillator(INIT_FREQ, "triangle").toMaster();
-
   return (
     <div style={classes.containerTop}>
       <div style={classes.topRow}>
