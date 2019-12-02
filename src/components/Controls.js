@@ -120,8 +120,8 @@ class Controls extends React.Component {
 
   start() {
     const { synth } = this.props;
-    synth.start();
-    synth.volume.rampTo(0, 0.1);
+    synth.start("+.1");
+    synth.volume.rampTo(-12, 0.1);
     this.setState({ playing: true });
   }
 
