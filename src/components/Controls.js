@@ -13,6 +13,7 @@ import { Typography } from "@material-ui/core";
 import PlayArrowIcon from "@material-ui/icons/PlayArrow";
 import StopIcon from "@material-ui/icons/Stop";
 import { isMobile } from "react-device-detect";
+import { withOrientationChange } from "react-device-detect";
 
 import "./controls.css";
 
@@ -134,7 +135,7 @@ class Controls extends React.Component {
 
   render() {
     const { playing } = this.state;
-    const synth = this.props.synth;
+    const { synth, isLandscape, isPortrait } = this.props;
     return (
       <React.Fragment>
         <div
@@ -144,7 +145,11 @@ class Controls extends React.Component {
             justifyContent: "center",
             alignItems: "center",
             flexDirection: "column",
-            height: isMobile ? window.innerHeight : "100vh",
+            height: isLandscape
+              ? window.innerHeight
+              : isPortrait
+              ? window.innerHeight
+              : "100vh",
             backgroundColor: playing
               ? `hsl(${this.state.shiftedHue}, 100%, 50%)`
               : "white",
@@ -208,4 +213,4 @@ class Controls extends React.Component {
   }
 }
 
-export default Controls;
+export default withOrientationChange(Controls);
