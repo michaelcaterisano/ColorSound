@@ -4,7 +4,7 @@ import Tone from "tone";
 import { isMobile } from "react-device-detect";
 import { withOrientationChange } from "react-device-detect";
 
-let height = isMobile ? window.innerHeight : "100vh";
+let height = window.innerHeight;
 
 window.addEventListener("orientationchange", function(e) {
   height = window.innerHeight;
