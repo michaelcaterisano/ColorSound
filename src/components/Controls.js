@@ -149,8 +149,7 @@ class Controls extends React.Component {
             backgroundColor: playing
               ? `hsl(${this.state.shiftedHue}, 100%, 50%)`
               : "white",
-            width: "100%",
-            height: "100%"
+            width: "100%"
           }}
         >
           {/* {this.state.playing ? (

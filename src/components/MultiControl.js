@@ -16,8 +16,7 @@ const classes = {
   containerTop: {
     height: height,
     display: "flex",
-    flexDirection: "column",
-    height: "100vh"
+    flexDirection: "column"
   },
   topRow: {
     height: "100%",
