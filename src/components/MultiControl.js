@@ -1,37 +1,24 @@
 import React from "react";
 import Controls from "./Controls";
 import Tone from "tone";
+import { isMobile } from "react-device-detect";
 
 const INIT_FREQ = 128;
 
-const style = {
-  squareOne: {
-    position: "fixed",
-    top: "0",
-    left: "0",
-    width: "50vw",
-    height: "50vh"
+const classes = {
+  containerTop: {
+    height: isMobile ? window.innerHeight : "100vh",
+    display: "flex",
+    flexDirection: "column"
   },
-  squareTwo: {
-    position: "fixed",
-    top: "0",
-    right: "0",
-    width: "50vw",
-    height: "50vh"
+  topRow: {
+    height: "100%",
+    display: "flex",
+    flexDirection: "row"
   },
-  squareThree: {
-    position: "fixed",
-    bottom: "0",
-    left: "0",
-    width: "50vw",
-    height: "50vh"
-  },
-  squareFour: {
-    position: "fixed",
-    bottom: "0",
-    right: "0",
-    width: "50vw",
-    height: "50vh"
+  bottomRow: {
+    display: "flex",
+    height: "100%"
   }
 };
 
@@ -42,23 +29,15 @@ const MultiControl = () => {
   const synthFour = new Tone.Oscillator(INIT_FREQ, "triangle").toMaster();
 
   return (
-    <div>
-      {" "}
-      <div>
+    <div style={classes.containerTop}>
+      <div style={classes.topRow}>
         <Controls synth={synthOne} />
-      </div>
-      {/* <div style={style.squareTwo}>
-        {" "}
         <Controls synth={synthTwo} />
       </div>
-      <div style={style.squareThree}>
-        {" "}
+      <div style={classes.bottomRow}>
         <Controls synth={synthThree} />
-      </div>
-      <div style={style.squareFour}>
-        {" "}
         <Controls synth={synthFour} />
-      </div> */}
+      </div>
     </div>
   );
 };

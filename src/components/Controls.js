@@ -127,19 +127,23 @@ class Controls extends React.Component {
             alignItems: "center",
             flexDirection: "column",
             height: isMobile ? window.innerHeight : "100vh",
+            backgroundColor: `hsl(${this.state.shiftedHue}, 100%, 50%)`,
             width: "100%",
-            backgroundColor: `hsl(${this.state.shiftedHue}, 100%, 50%)`
+            height: "100%"
           }}
         >
-          <Typography color="secondary">sound on please</Typography>
-          {/* Blue */}
-          <div className="wrapper">
-            <img src={blue} alt=""></img>
+          <div style={{ zIndex: "2" }}>
+            <Typography color="secondary">sound on please</Typography>
           </div>
+
+          {/* Blue */}
+          {/* <div className="wrapper">
+            <img src={blue} alt=""></img>
+          </div> */}
           {/* Controls */}
           <div
             style={{
-              width: "80vw",
+              width: "80%",
               display: "flex",
               flexDirection: "column",
               justifyContent: "center",
