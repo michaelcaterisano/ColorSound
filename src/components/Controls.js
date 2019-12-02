@@ -145,7 +145,9 @@ class Controls extends React.Component {
             alignItems: "center",
             flexDirection: "column",
             height: isMobile ? window.innerHeight : "100vh",
-            backgroundColor: `hsl(${this.state.shiftedHue}, 100%, 50%)`,
+            backgroundColor: playing
+              ? `hsl(${this.state.shiftedHue}, 100%, 50%)`
+              : "white",
             width: "100%",
             height: "100%"
           }}
@@ -174,8 +176,8 @@ class Controls extends React.Component {
                   style={{
                     fontSize: 60,
                     color: "hsl(0, 60%, 50%)",
-                    backgroundColor: playing ? "green" : "",
-                    border: "1px solid green"
+                    backgroundColor: playing ? "green" : ""
+                    // border: "1px solid green"
                   }}
                   onClick={this.start}
                 />
