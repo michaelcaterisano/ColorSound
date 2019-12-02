@@ -2,14 +2,22 @@ import React from "react";
 import Controls from "./Controls";
 import Tone from "tone";
 import { isMobile } from "react-device-detect";
+import { withOrientationChange } from "react-device-detect";
+
+let height = isMobile ? window.innerHeight : "100vh";
+
+window.addEventListener("orientationchange", function(e) {
+  height = isMobile ? window.innerHeight : "100vh";
+});
 
 const INIT_FREQ = 129;
 
 const classes = {
   containerTop: {
-    height: isMobile ? window.innerHeight : "100vh",
+    height: height,
     display: "flex",
-    flexDirection: "column"
+    flexDirection: "column",
+    height: "100vh"
   },
   topRow: {
     height: "100%",
@@ -41,4 +49,4 @@ const MultiControl = () => {
   );
 };
 
-export default MultiControl;
+export default withOrientationChange(MultiControl);
