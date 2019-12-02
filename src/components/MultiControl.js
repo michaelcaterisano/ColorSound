@@ -7,7 +7,7 @@ import { withOrientationChange } from "react-device-detect";
 let height = isMobile ? window.innerHeight : "100vh";
 
 window.addEventListener("orientationchange", function(e) {
-  height = isMobile ? window.innerHeight : "100vh";
+  height = window.innerHeight;
 });
 
 const INIT_FREQ = 129;
