@@ -13,11 +13,6 @@ window.addEventListener("orientationchange", function(e) {
 const INIT_FREQ = 129;
 
 const classes = {
-  containerTop: {
-    height: height,
-    display: "flex",
-    flexDirection: "column"
-  },
   topRow: {
     height: "100%",
     display: "flex"
@@ -34,7 +29,7 @@ const synthFour = new Tone.Oscillator(INIT_FREQ, "triangle").toMaster();
 
 const MultiControl = () => {
   return (
-    <div style={classes.containerTop}>
+    <div style={{ height: height, display: "flex", flexDirection: "column" }}>
       <div style={classes.topRow}>
         <Controls synth={synthOne} />
         <Controls synth={synthTwo} />
