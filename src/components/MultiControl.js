@@ -3,7 +3,7 @@ import Controls from "./Controls";
 import Tone from "tone";
 import { isMobile } from "react-device-detect";
 
-const INIT_FREQ = 128;
+const INIT_FREQ = 129;
 
 const classes = {
   containerTop: {
@@ -13,8 +13,7 @@ const classes = {
   },
   topRow: {
     height: "100%",
-    display: "flex",
-    flexDirection: "row"
+    display: "flex"
   },
   bottomRow: {
     display: "flex",
@@ -23,9 +22,9 @@ const classes = {
 };
 
 const MultiControl = () => {
-  const synthOne = new Tone.Oscillator(INIT_FREQ, "triangle9").toMaster();
+  const synthOne = new Tone.Oscillator(INIT_FREQ, "triangle16").toMaster();
   const synthTwo = new Tone.Oscillator(INIT_FREQ, "triangle").toMaster();
-  const synthThree = new Tone.Oscillator(INIT_FREQ, "triangle").toMaster();
+  const synthThree = new Tone.Oscillator(INIT_FREQ, "triangle6").toMaster();
   const synthFour = new Tone.Oscillator(INIT_FREQ, "triangle").toMaster();
 
   return (

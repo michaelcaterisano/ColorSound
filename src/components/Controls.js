@@ -10,11 +10,15 @@ import { withStyles, makeStyles } from "@material-ui/core/styles";
 import { Slider } from "@material-ui/core";
 import { Button } from "@material-ui/core";
 import { Typography } from "@material-ui/core";
+import PlayArrowIcon from "@material-ui/icons/PlayArrow";
+import StopIcon from "@material-ui/icons/Stop";
 import { isMobile } from "react-device-detect";
 
 import "./controls.css";
 
 const INIT_FREQ = 128;
+const customRed = "hsl(0, 60%, 50%)";
+const debug = true;
 
 const iOSBoxShadow =
   "0 3px 1px rgba(0,0,0,0.1),0 4px 8px rgba(0,0,0,0.13),0 0 0 1px rgba(0,0,0,0.02)";
@@ -54,7 +58,9 @@ const MySlider = withStyles({
 class Controls extends React.Component {
   constructor(props) {
     super(props);
+
     this.state = {
+      playing: false,
       hue: 0,
       shiftedHue: 240,
       lightness: 32,
@@ -65,7 +71,8 @@ class Controls extends React.Component {
     this.hslToLab = this.hslToLab.bind(this);
     this.shiftToBlue = this.shiftToBlue.bind(this);
     this.convertLabToFreq = this.convertLabToFreq.bind(this);
-    this.expandedLightness = this.expandLightness.bind(this);
+    this.start = this.start.bind(this);
+    this.stop = this.stop.bind(this);
   }
 
   onHueChange(event, value) {
@@ -77,7 +84,8 @@ class Controls extends React.Component {
     // calculate LAB, get lightness value
     const lightness = this.hslToLab(shifted);
     // convert lightness value to frequency
-    const frequency = this.convertLabToFreq(lightness) * 4;
+    const frequency = this.convertLabToFreq(lightness);
+    console.log(frequency);
     // set synth frequency
     synth.frequency.value = frequency;
     //
@@ -89,12 +97,9 @@ class Controls extends React.Component {
     });
   }
 
-  //TODO: Move utility functions to helper file
   hslToLab(hue) {
-    console.log(`hue: ${hue}`);
     const rgb = convert.hsl.rgb.raw([hue, 100, 50]);
     const lab = convert.rgb.lab.raw(rgb);
-    console.log(`lab: ${lab}`);
     return lab[0];
   }
 
@@ -107,21 +112,34 @@ class Controls extends React.Component {
   }
 
   convertLabToFreq(x) {
-    // shift and expand frequency range
-    // return (x - 32) * (600 / 65) + 200;
-    return x;
+    // const newX = parseInt((x - 32) * (23 / 65));
+    // console.log(newX);
+    // return notes[newX];
+    return x * 4;
   }
 
-  expandLightness(x) {
-    return x === null ? 0 : (x - 32) * (100 / 65);
+  start() {
+    const { synth } = this.props;
+    synth.start();
+    synth.volume.rampTo(0, 0.1);
+    this.setState({ playing: true });
+  }
+
+  stop() {
+    const { synth } = this.props;
+    synth.stop("+1.2");
+    synth.volume.rampTo(-Infinity, 0.1);
+    this.setState({ playing: false });
   }
 
   render() {
+    const { playing } = this.state;
     const synth = this.props.synth;
     return (
       <React.Fragment>
         <div
           style={{
+            position: "relative",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
@@ -132,14 +150,29 @@ class Controls extends React.Component {
             height: "100%"
           }}
         >
-          <div style={{ zIndex: "2" }}>
-            <Typography color="secondary">sound on please</Typography>
-          </div>
-
           {/* Blue */}
-          {/* <div className="wrapper">
-            <img src={blue} alt=""></img>
-          </div> */}
+          {this.state.playing ? (
+            <div
+              style={{
+                position: "absolute",
+                top: "0",
+                left: "0",
+                height: "100px",
+                width: "100px",
+                backgroundImage: `url(${blue})`,
+                backgroundSize: "contain",
+                backgroundRepeat: "no-repeat",
+                zIndex: "0"
+              }}
+            ></div>
+          ) : null}
+          {this.state.playing ? (
+            <div style={{ position: "absolute", top: "10%", fontSize: "30px" }}>
+              {this.state.frequency.toFixed(1)}Hz
+            </div>
+          ) : null}
+          <div style={{ zIndex: "2", color: customRed }}>sound on please</div>
+
           {/* Controls */}
           <div
             style={{
@@ -153,23 +186,22 @@ class Controls extends React.Component {
             {" "}
             <div id="buttons" style={{ display: "flex", marginBottom: "20px" }}>
               <div style={{ margin: "10px" }}>
-                <Button
-                  variant="contained"
-                  color="primary"
-                  onClick={() => synth.start()}
-                >
-                  start
-                </Button>
+                <PlayArrowIcon
+                  style={{
+                    fontSize: 60,
+                    color: "hsl(0, 60%, 50%)",
+                    backgroundColor: playing ? "green" : "",
+                    border: "1px solid green"
+                  }}
+                  onClick={this.start}
+                />
               </div>
 
               <div style={{ margin: "10px" }}>
-                <Button
-                  variant="contained"
-                  color="primary"
-                  onClick={() => synth.stop()}
-                >
-                  stop
-                </Button>
+                <StopIcon
+                  style={{ fontSize: 60, color: "black" }}
+                  onClick={this.stop}
+                ></StopIcon>
               </div>
             </div>
             <div id="slider-container" style={{ width: "80%" }}>
@@ -182,6 +214,7 @@ class Controls extends React.Component {
                 onChange={this.onHueChange}
               />
             </div>
+            <span>slide me</span>
           </div>
         </div>
       </React.Fragment>
