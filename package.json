@@ -6,7 +6,7 @@
     "color-convert": "^2.0.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.3",
+    "react-scripts": "3.4.4",
     "tone": "^14.7.58"
   },
   "scripts": {
